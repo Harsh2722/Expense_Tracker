@@ -1,0 +1,49 @@
+﻿@model List<MVC_Project.Models.totalLimit>
+
+@{
+    ViewBag.Title = "ListLimit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Icon.js"></script>
+<script src="~/Scripts/Fontawsome.js"></script>
+
+<h2>List-Limit</h2>
+
+@if (TempData["AlertMsg"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success &#9989;</strong>@TempData["AlertMsg"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+@if (TempData["Alertd"] != null)
+{
+    <div class="alert alert-danger">
+        <i style='font-size:24px' class='fas'>&#xf071;</i>@TempData["Alertd"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+<table class="table table-bordered">
+    <tr class="text-capitalize bg-dark text-white text-center">
+        <th>Total Limit</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="text-center">
+            <td>@item.Total_Limit</td>
+            <td>
+                <a href="@Url.Action("EditLimit",new { item.Id,item.Total_Limit })" class="btn btn-success"><i class="fas">&#xf044; Edit</i></a>
+            </td>
+        </tr>
+    }
+</table>
+
